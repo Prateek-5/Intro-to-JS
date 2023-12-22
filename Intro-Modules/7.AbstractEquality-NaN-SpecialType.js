@@ -62,4 +62,59 @@ console.log(true=="1"); //true=="1"-->1 true ==1 returns true
 
 console.log(10=={valueOf(){return 10}}) //op:true type of Type(x) is a Number,String,Symbol and Type(y) is an object so we call ToPrimitive(y) without hint
 
+/*
+    NaN(Not a Number)
+        It actually does'nt actually mean not a number rather it give a notion of an invalid number
+        Nan is the only primitive in JS which does not follow the identity property and it is not equalt to iteself 
 
+
+*/
+
+console.log(NaN==NaN); //op false 
+/**
+ * What happens is the Nan==Nan the following operation calles the strict equality at the back end and in according to the strict equalit 
+ * if either of the openent is a NaN return false right away 
+ */
+
+/*
+    The following property of the NaN brings a challange that if suppose a function might return a NaN value in it's return type
+    the have will we validate that the following is a number or not .For that we have a function
+
+    isNaN()
+    NaN coerces the argument before chacking foe NaN in in that coercion if it encounters that the following argunment like a string 
+    and when we try to corecion to a number the nornal string like "17"."19" will get easly converted to a valid number but string like
+    "abc","Prateek" when converted to a number will give NaN as return which bring us the the challanges of the isNaN function
+
+
+ */
+
+console.log(isNaN(10-'c')); //true
+console.log(isNaN("Prateek"));//Op:true which should not be the case
+
+/**
+    To overcome the following we have a solution which is Number.isNaN() which does not do coersion on string 
+
+ */
+
+console.log(Number.isNaN("abc")); //op:false see the following doest not conver the string "abc" to a valid number
+
+/*
+    Types of languages 
+        Compiled typed lang  -->C++ is an example of a compiled typed lang
+        Interprated Lang  -->shell script is an example of a Interprated lang
+        Hybrid  -->Javascript is a hybrid lang as it does 2 phase first it complies and then it runs the code line by line
+ */
+
+/*
+        Boxing
+            A phenomina of converting primmitive values into objects
+
+ */
+
+console.log("abc".toString()); //An example og auto boxing the string gets automatically converted into an object
+console.log(Number(9).toString()); //An example of manual boxing we explicitly convert the number into man object and the call toString();
+
+//few variabtion of the above code
+console.log(8..toString());
+console.log((8).toString());
+console.log(typeof (7).toString());//op:String
